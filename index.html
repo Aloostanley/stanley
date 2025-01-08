@@ -5,38 +5,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aloo Stanley - Portfolio</title>
-    <link rel="stylesheet" href="./output.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+
+    <!-- Framer Motion CDN -->
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+    <!-- Custom Styles -->
     <style>
-        /* Add custom styles */
+        /* Additional styles for button animation */
+        .animated-button {
+            transition: transform 0.3s ease;
+        }
+
+        .animated-button:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000; /* Ensure it's above other content */
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+        }
+      /* Beautiful color palette */
+      :root {
+        --primary-color: #60a5fa;    /* Light blue for primary actions */
+        --secondary-color: #f472b6;    /* Pink/purple for accents */
+        --background-color: #f0f9ff;  /* Very light blue for background */
+        --text-color-dark: #334155;   /* Dark gray for body text */
+        --text-color-light: #6b7280; /* Lighter gray for secondary text */
+      }
+       body {
+            background-color: var(--background-color);
+            color: var(--text-color-dark);
+        }
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+          .text-primary {
+            color: var(--primary-color);
+        }
+        .text-secondary {
+            color: var(--secondary-color);
+          }
+         .bg-secondary {
+            background-color: var(--secondary-color);
+         }
+          .text-gray-700 {
+           color: var(--text-color-light);
+           }
+
+         .text-gray-800 {
+            color: var(--text-color-dark);
+         }
+        .bg-gray-100{
+            background-color: white
+        }
+        .bg-gray-50{
+             background-color: #ecf0f1
+        }
+        .shadow-md {
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /*make logo medium size*/
+        .logo-medium {
+            height: 30px; /* Adjust as needed */
+            width: auto; /* Maintain aspect ratio */
+        }
     </style>
 </head>
 
-<body class="bg-gray-100 font-calibri
-">
+<body class="font-calibri">
     <!-- Header -->
     <header class="bg-white shadow-md py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Stanley Aloo</a>
+            <a href="#" class="flex items-center text-2xl font-bold text-gray-800">
+                <img src="./assets/logo.png" alt="Your Logo" class="logo-medium mr-2">
+                 Stanley Aloo 
+            </a>
+
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="#about" class="text-gray-700 hover:text-gray-900">About</a></li>
-                    <li><a href="#work" class="text-gray-700 hover:text-gray-900">Work</a></li>
-                    <li><a href="#contact" class="text-gray-700 hover:text-gray-900">Contact</a></li>
+                    <li>
+                        <a href="#about" class="flex items-center text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-user mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 14c4 0 6 2 6 4v1H6v-1c0-2 2-4 6-4z"></path>
+                                <path d="M12 12c2.21 0 4-2 4-4s-1.79-4-4-4-4 2-4 4 1.79 4 4 4z"></path>
+                            </svg>
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#work" class="flex items-center text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-briefcase mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                                <path d="M9 2v4h6V2"></path>
+                            </svg>
+                            Work
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="flex items-center text-gray-700 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-mail mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12l-10 6-10-6V6l10 6 10-6z"></path>
+                                <path d="M2 12l10 6 10-6"></path>
+                            </svg>
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to My Portfolio</h1>
-            <p class="text-lg text-gray-600 mb-8">I'm a passionate producer, video editor, and photographer.</p>
-            <a href="#work"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">View
-                My Work</a>
-        </div>
-    </section>
+    <motion.section
+        id="hero"
+        class="py-16 bg-gray-50 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+    >
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to My Portfolio</h1>
+        <p class="text-lg text-gray-700 mb-8">I'm a passionate producer, video editor, and photographer.</p>
+        <a href="#work" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animated-button">
+            View My Work
+        </a>
+    </motion.section>
 
     <!-- About Section -->
     <section id="about" class="py-16">
@@ -44,7 +148,7 @@
             <div class="md:w-1/2 md:pr-10 mb-8 md:mb-0">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
                 <p class="text-gray-700 mb-6">
-                   Hello! My name is Stanley Aloo I'm a producer, video editor, and photographer. I have a passion for creating high-quality content and telling stories through different visual media.
+                    Hello! My name is Stanley Aloo. I'm a producer, video editor, and photographer. I have a passion for creating high-quality content and telling stories through different visual media.
                 </p>
                 <p class="text-gray-700 mb-6">
                     I enjoy working on both short and long-form projects, and my goal is always to deliver exceptional results for my clients.
@@ -54,13 +158,8 @@
                 </p>
             </div>
             <div class="md:w-1/2 w-full flex justify-center">
-                <img src="./assets/profile_image.jpg" alt="Your Profile" class="rounded-lg shadow-md w-19 h-48                 object-cover">
+                <img src="./assets/profile_image.jpg" alt="Your Profile" class="rounded-lg shadow-md w-19 h-48 object-cover">
             </div>
-            
-            
-            
-            
-            
         </div>
     </section>
 
@@ -68,50 +167,67 @@
     <section id="work" class="py-16 bg-gray-50">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">My Work</h2>
-           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
                 <!-- Project 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="./assets/project_1.jpg" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="relative pb-9/16"> <!-- Aspect ratio 16:9 -->
+                        <iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/aKfEZ6sS92k?si=HFsfBqK8ufrp3ryB&start=25" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                        </iframe>
+                    </div>
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Rabbit Farming</h3>
-                        <p class="text-gray-700">I edited to encourage rabbit farming </p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Life of Rabbits: A Beginner's Guide to Rabbit Husbandry"</h3>
+                        <p class="text-gray-700">
+                            🐇 Learn the basics of rabbit care: housing, diet, and health tips for a happy bunny! 🌿🏡
+                        </p>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <!-- Embed YouTube Video --> 
                     <div class="relative pb-9/16"> <!-- Aspect ratio 16:9 -->
                         <iframe width="560" height="315" 
-                        src="https://www.youtube.com/embed/uj0e5krcWUY?si=drRkdIcaxWROWsip&amp;start=30"
-                         title="YouTube video player" 
-                         frameborder="0" 
-                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                         referrerpolicy="strict-origin-when-cross-origin" 
-                         allowfullscreen>
+                        src="https://www.youtube.com/embed/uj0e5krcWUY?si=drRkdIcaxWROWsip&start=30"
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
                         </iframe>
                     </div>
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Empowering Luo Voices: Building a Stronger Community
-
-                        </h3>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Empowering Luo Voices: Building a Stronger Community</h3>
                         <p class="text-gray-700">
                             Uniting the Luo community through culture, collaboration, and empowerment. 🌍🤝 Celebrate our heritage and grow together! 🌱✨
                         </p>
                     </div>
                 </div>
-                
 
                 <!-- Project 3 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="./assets/project_3.jpg" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="relative pb-9/16"> <!-- Aspect ratio 16:9 -->
+                        <iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/5uxCYbWLymY?si=2YyRCfFHnwjQEkEa&start=5"
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                        </iframe>
+                    </div>
                     <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Project 3 Title</h3>
-                        <p class="text-gray-700">Description of the project goes here</p>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Ingredient: Elevate Your Homemade Food Game"</h3>
+                        <p class="text-gray-700">
+                            Quick tips to make your homemade food tastier and unique. Simple, easy, and delicious! 🍴
+                        </p>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -125,19 +241,22 @@
                 I'm always open to new opportunities and collaborations. Feel free to reach out!
             </p>
             <p class="text-gray-700 mb-6">
-                Email: <a href="mailto:your.email@example.com" class="text-blue-500 hover:text-blue-700">sm2391686@gmail.com</a>
+                Email: <a href="mailto:sm2391686@gmail.com" class="text-blue-500 hover:text-blue-700">sm2391686@gmail.com</a>
             </p>
             <p class="text-gray-700 mb-6">
-                Phone: <a href="tel:+1234567890" class="text-blue-500 hover:text-blue-700">+254 112 036 777
-
-                </a>
+                Phone: <a href="tel:+254112036777" class="text-blue-500 hover:text-blue-700">+254 112 036 777</a>
             </p>
             <a href="https://drive.google.com/file/d/1vwgxLRlb6aSMhYGwuBJtzSX2jZ4maxD4/view?usp=drive_link"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Download Resume
-             </a>
+            </a>
         </div>
     </section>
+
+     <!-- WhatsApp Icon -->
+     <a href="https://wa.me/254112036777" target="_blank" class="whatsapp-icon">
+        <img src="./assets/whatsapp-icon.png" alt="WhatsApp" class="h-12 w-12">
+    </a>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-4 text-center">
@@ -145,6 +264,26 @@
             <p>© 2024 Stanley Aloo. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Framer Motion Animations -->
+    <script>
+        // Animate sections with GSAP (JavaScript)
+        const { motion } = window["framer-motion"];
+        const heroSection = document.querySelector('#hero');
+        const contactSection = document.querySelector('#contact');
+
+        // Animate hero section
+        gsap.from(heroSection, { opacity: 0, duration: 1, y: -50 });
+
+        // Animate contact section
+        gsap.from(contactSection, { opacity: 0, duration: 1, y: 50, delay: 0.5 });
+    </script>
+
 </body>
 
 </html>
