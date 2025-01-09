@@ -25,61 +25,87 @@
         .animated-button:hover {
             transform: scale(1.1);
         }
+        /*remove fixed style to make it flow in the document*/
         .whatsapp-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000; /* Ensure it's above other content */
             transition: transform 0.3s ease;
         }
 
         .whatsapp-icon:hover {
             transform: scale(1.1);
         }
-      /* Beautiful color palette */
-      :root {
-        --primary-color: #60a5fa;    /* Light blue for primary actions */
-        --secondary-color: #f472b6;    /* Pink/purple for accents */
-        --background-color: #f0f9ff;  /* Very light blue for background */
-        --text-color-dark: #334155;   /* Dark gray for body text */
-        --text-color-light: #6b7280; /* Lighter gray for secondary text */
-      }
-       body {
+
+        /* Beautiful color palette */
+        :root {
+            --primary-color: #60a5fa;
+            /* Light blue for primary actions */
+            --secondary-color: #f472b6;
+            /* Pink/purple for accents */
+            --background-color: #f0f9ff;
+            /* Very light blue for background */
+            --text-color-dark: #334155;
+            /* Dark gray for body text */
+            --text-color-light: #6b7280;
+            /* Lighter gray for secondary text */
+        }
+
+        body {
             background-color: var(--background-color);
             color: var(--text-color-dark);
+            overflow-x: hidden;
+            /* To prevent horizontal scrollbar */
         }
+
         .bg-primary {
             background-color: var(--primary-color);
         }
-          .text-primary {
+
+        .text-primary {
             color: var(--primary-color);
         }
+
         .text-secondary {
             color: var(--secondary-color);
-          }
-         .bg-secondary {
-            background-color: var(--secondary-color);
-         }
-          .text-gray-700 {
-           color: var(--text-color-light);
-           }
+        }
 
-         .text-gray-800 {
+        .bg-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .text-gray-700 {
+            color: var(--text-color-light);
+        }
+
+        .text-gray-800 {
             color: var(--text-color-dark);
-         }
-        .bg-gray-100{
-            background-color: white
         }
-        .bg-gray-50{
-             background-color: #ecf0f1
+
+        .bg-gray-100 {
+            background-color: white;
         }
+
+        .bg-gray-50 {
+            background-color: #ecf0f1;
+        }
+
         .shadow-md {
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
+
         /*make logo medium size*/
         .logo-medium {
-            height: 30px; /* Adjust as needed */
-            width: auto; /* Maintain aspect ratio */
+            height: 30px;
+            /* Adjust as needed */
+            width: auto;
+            /* Maintain aspect ratio */
+        }
+
+        /* Bubbles */
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(var(--primary-color-rgb), 0.4);
+            pointer-events: none;
+            /* Makes the bubbles not interfere with clicks */
         }
     </style>
 </head>
@@ -89,8 +115,8 @@
     <header class="bg-white shadow-md py-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center text-2xl font-bold text-gray-800">
-                <img src="./assets/logo.png" alt="Your Logo" class="logo-medium mr-2">
-                 Stanley Aloo 
+                <img src="./assets/Copy of White and Black Minimal Letter SA Architect Company Logo.png" alt="Your Logo" class="logo-medium mr-3">
+                Stanley Aloo
             </a>
 
             <nav>
@@ -128,13 +154,7 @@
     </header>
 
     <!-- Hero Section -->
-    <motion.section
-        id="hero"
-        class="py-16 bg-gray-50 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-    >
+    <motion.section id="hero" class="py-16 bg-gray-50 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
         <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to My Portfolio</h1>
         <p class="text-lg text-gray-700 mb-8">I'm a passionate producer, video editor, and photographer.</p>
         <a href="#work" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animated-button">
@@ -167,68 +187,88 @@
     <section id="work" class="py-16 bg-gray-50">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">My Work</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Project 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative pb-9/16"> <!-- Aspect ratio 16:9 -->
-                        <iframe width="560" height="315" 
-                        src="https://www.youtube.com/embed/aKfEZ6sS92k?si=HFsfBqK8ufrp3ryB&start=25" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                    <div class="relative pb-9/16">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/aKfEZ6sS92k?si=HFsfBqK8ufrp3ryB&start=25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Life of Rabbits: A Beginner's Guide to Rabbit Husbandry"</h3>
-                        <p class="text-gray-700">
-                            🐇 Learn the basics of rabbit care: housing, diet, and health tips for a happy bunny! 🌿🏡
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Life of Rabbits"</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            🐇 A detailed guide on rabbit care covering housing, diet, and essential health tips, ensuring a happy and healthy bunny! 🌿🏡 This video is designed to equip beginners with the knowledge needed to care for their new pet.
                         </p>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative pb-9/16"> <!-- Aspect ratio 16:9 -->
-                        <iframe width="560" height="315" 
-                        src="https://www.youtube.com/embed/uj0e5krcWUY?si=drRkdIcaxWROWsip&start=30"
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                    <div class="relative pb-9/16">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/uj0e5krcWUY?si=drRkdIcaxWROWsip&start=30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Empowering Luo Voices: Building a Stronger Community</h3>
-                        <p class="text-gray-700">
-                            Uniting the Luo community through culture, collaboration, and empowerment. 🌍🤝 Celebrate our heritage and grow together! 🌱✨
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Empowering Luo Voices</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            🌍 This project is focused on uniting the Luo community through cultural activities, enhancing collaboration, and fostering empowerment. 🤝 It celebrates the rich Luo heritage and promotes community growth. 🌱✨
                         </p>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative pb-9/16"> <!-- Aspect ratio 16:9 -->
-                        <iframe width="560" height="315" 
-                        src="https://www.youtube.com/embed/5uxCYbWLymY?si=2YyRCfFHnwjQEkEa&start=5"
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                    <div class="relative pb-9/16">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/5uxCYbWLymY?si=2YyRCfFHnwjQEkEa&start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Ingredient: Elevate Your Homemade Food Game"</h3>
-                        <p class="text-gray-700">
-                            Quick tips to make your homemade food tastier and unique. Simple, easy, and delicious! 🍴
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Ingredient"</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            🍴Discover the quick and easy tips that will enhance your homemade food to a different level. This short video shows you how you can transform your meals into something unique and very delicious.
                         </p>
                     </div>
                 </div>
 
+                <!-- Project 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                    <div class="relative pb-9/16">
+                        <img src="./assets/DSC_5246.JPG" alt="Photography Portfolio" class="w-full object-cover h-full absolute top-0 left-0">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Photography Portfolio</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Explore my photography portfolio showcasing a variety of subjects, from portraits to landscapes. I aim to capture unique moments and share the beauty around us. 📸
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                    <div class="relative pb-9/16">
+                        <img src="./assets/DSC_5159.JPG" alt="exploring art" class="w-full object-cover h-full absolute top-0 left-0">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                         <h3 class="text-xl font-bold text-gray-800 mb-2">exploring art
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Close-up photography captures fine details of small subjects, revealing textures and patterns often unseen. It uses a macro lens for sharp focus. 📸🔍🌸
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                    <div class="relative pb-9/16">
+                        <img src="./assets/DSC_5391.JPG" alt="portraits" class="w-full object-cover h-full absolute top-0 left-0">
+                    </div>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">portraits</h3>
+                        <p class="text-gray-700 mb-4 flex-grow">
+                            Portrait photography highlights a person's personality and emotions, capturing their essence in a single frame. It emphasizes facial expressions, lighting, and composition to tell a unique story. 📸😊🎨
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -246,17 +286,20 @@
             <p class="text-gray-700 mb-6">
                 Phone: <a href="tel:+254112036777" class="text-blue-500 hover:text-blue-700">+254 112 036 777</a>
             </p>
-            <a href="https://drive.google.com/file/d/1vwgxLRlb6aSMhYGwuBJtzSX2jZ4maxD4/view?usp=drive_link"
-            class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <!-- WhatsApp Icon -->
+            <a href="https://wa.me/254112036777" target="_blank" class="whatsapp-icon flex justify-center mb-6">
+
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
+                    <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
+                </svg>
+                <p>Whatsapp me
+            </a>
+            <a href="https://drive.google.com/file/d/1vwgxLRlb6aSMhYGwuBJtzSX2jZ4maxD4/view?usp=drive_link" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Download Resume
             </a>
         </div>
     </section>
-
-     <!-- WhatsApp Icon -->
-     <a href="https://wa.me/254112036777" target="_blank" class="whatsapp-icon">
-        <img src="./assets/whatsapp-icon.png" alt="WhatsApp" class="h-12 w-12">
-    </a>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-4 text-center">
@@ -278,10 +321,53 @@
         const contactSection = document.querySelector('#contact');
 
         // Animate hero section
-        gsap.from(heroSection, { opacity: 0, duration: 1, y: -50 });
+        gsap.from(heroSection, {
+            opacity: 0,
+            duration: 1,
+            y: -50
+        });
 
         // Animate contact section
-        gsap.from(contactSection, { opacity: 0, duration: 1, y: 50, delay: 0.5 });
+        gsap.from(contactSection, {
+            opacity: 0,
+            duration: 1,
+            y: 50,
+            delay: 0.5
+        });
+    </script>
+
+    <!-- Floating Bubbles Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Extract rgb values from the primary color
+            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
+            const hexToRgb = (hex) => {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : null;
+            };
+            const primaryColorRGB = hexToRgb(primaryColor);
+            document.documentElement.style.setProperty('--primary-color-rgb', primaryColorRGB);
+
+            const createBubble = () => {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                const size = Math.random() * 20 + 10; // Bubble size between 10 and 30px
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}vw`;
+                bubble.style.top = `${Math.random() * 100}vh`;
+                bubble.style.animationDuration = `${Math.random() * 5 + 8}s`; // Animation duration between 8 and 13 seconds
+                bubble.style.setProperty('z-index', '-1')
+                document.body.appendChild(bubble);
+
+                bubble.addEventListener('animationend', () => {
+                    bubble.remove();
+                });
+
+            };
+
+            setInterval(createBubble, 300); // Create a new bubble every 300ms
+        });
     </script>
 
 </body>
