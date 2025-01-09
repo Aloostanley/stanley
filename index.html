@@ -15,6 +15,13 @@
     <!-- Framer Motion CDN -->
     <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
 
+    <!-- GSAP CDN for animations-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+      <!-- Lato Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+
     <!-- Custom Styles -->
     <style>
         /* Additional styles for button animation */
@@ -49,6 +56,7 @@
         }
 
         body {
+              font-family: 'Lato', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color-dark);
             overflow-x: hidden;
@@ -100,13 +108,46 @@
         }
 
         /* Bubbles */
-        .bubble {
-            position: absolute;
+         .bubble {
+             position: absolute;
             border-radius: 50%;
             background: rgba(var(--primary-color-rgb), 0.4);
             pointer-events: none;
             /* Makes the bubbles not interfere with clicks */
+            z-index: -1; /* Ensures bubbles are behind other content */
         }
+
+         /* Adjust image size in about section */
+        #about .w-19 {
+            width: 12rem; /* Adjust as needed */
+        }
+
+        #about .h-48 {
+             height: 12rem; /* Adjust as needed */
+        }
+
+         /* Rounded corners for project cards */
+        #work .bg-white {
+            border-radius: 1rem;
+        }
+
+
+        /* Adjust image container to maintain aspect ratio */
+        .image-container {
+          position: relative;
+          overflow: hidden; /* To clip the image if it overflows */
+          padding-bottom: 75%; /* This creates a 4:3 aspect ratio (height = 75% of width) */
+        }
+        
+         .image-container img {
+             position: absolute;
+             top: 0;
+             left: 0;
+              width: 100%;
+             height: 100%;
+             object-fit: cover;
+        }
+
     </style>
 </head>
 
@@ -231,12 +272,12 @@
                     </div>
                 </div>
 
-                <!-- Project 4 -->
+                 <!-- Project 4 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                    <div class="relative pb-9/16">
-                        <img src="./assets/DSC_5246.JPG" alt="Photography Portfolio" class="w-full object-cover h-full absolute top-0 left-0">
+                    <div class="image-container">
+                        <img src="./assets/DSC_5246.JPG" alt="Photography Portfolio">
                     </div>
-                    <div class="p-4 flex flex-col flex-grow">
+                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Photography Portfolio</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Explore my photography portfolio showcasing a variety of subjects, from portraits to landscapes. I aim to capture unique moments and share the beauty around us. 📸
@@ -246,11 +287,11 @@
 
                 <!-- Project 5 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                    <div class="relative pb-9/16">
-                        <img src="./assets/DSC_5159.JPG" alt="exploring art" class="w-full object-cover h-full absolute top-0 left-0">
+                     <div class="image-container">
+                         <img src="./assets/DSC_5159.JPG" alt="exploring art">
                     </div>
-                    <div class="p-4 flex flex-col flex-grow">
-                         <h3 class="text-xl font-bold text-gray-800 mb-2">exploring art
+                     <div class="p-4 flex flex-col flex-grow">
+                         <h3 class="text-xl font-bold text-gray-800 mb-2">exploring art</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
                             Close-up photography captures fine details of small subjects, revealing textures and patterns often unseen. It uses a macro lens for sharp focus. 📸🔍🌸
                         </p>
@@ -259,8 +300,8 @@
 
                 <!-- Project 6 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                    <div class="relative pb-9/16">
-                        <img src="./assets/DSC_5391.JPG" alt="portraits" class="w-full object-cover h-full absolute top-0 left-0">
+                    <div class="image-container">
+                        <img src="./assets/DSC_5391.JPG" alt="portraits">
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">portraits</h3>
@@ -338,7 +379,7 @@
 
     <!-- Floating Bubbles Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', () => {
             // Extract rgb values from the primary color
             const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
             const hexToRgb = (hex) => {
@@ -348,6 +389,7 @@
             const primaryColorRGB = hexToRgb(primaryColor);
             document.documentElement.style.setProperty('--primary-color-rgb', primaryColorRGB);
 
+
             const createBubble = () => {
                 const bubble = document.createElement('div');
                 bubble.classList.add('bubble');
@@ -356,17 +398,50 @@
                 bubble.style.height = `${size}px`;
                 bubble.style.left = `${Math.random() * 100}vw`;
                 bubble.style.top = `${Math.random() * 100}vh`;
-                bubble.style.animationDuration = `${Math.random() * 5 + 8}s`; // Animation duration between 8 and 13 seconds
-                bubble.style.setProperty('z-index', '-1')
-                document.body.appendChild(bubble);
 
-                bubble.addEventListener('animationend', () => {
+                // Random starting x-axis velocity
+                const xVelocity = (Math.random() - 0.5) * 10;
+
+                // Random starting y-axis velocity
+                const yVelocity = (Math.random() - 0.5) * 10;
+
+
+
+                const animate = () => {
+                // Update bubble position
+                   let currentX = parseFloat(bubble.style.left);
+                    let currentY = parseFloat(bubble.style.top);
+
+
+                   currentX += xVelocity/5;
+                   currentY += yVelocity/5;
+
+                // Keep the bubble in the viewport
+                 if(currentX > window.innerWidth || currentX < 0){
+                        xVelocity *=-1;
+                }
+                if(currentY > window.innerHeight || currentY <0){
+                    yVelocity *= -1;
+                }
+
+                    bubble.style.left = `${currentX}px`;
+                    bubble.style.top = `${currentY}px`;
+
+                 requestAnimationFrame(animate);
+            };
+
+            animate();
+
+            document.body.appendChild(bubble);
+            // Remove bubble after certain time
+            setTimeout(() => {
                     bubble.remove();
-                });
+                    }, 20000);
 
             };
 
             setInterval(createBubble, 300); // Create a new bubble every 300ms
+
         });
     </script>
 
