@@ -18,9 +18,8 @@
     <!-- GSAP CDN for animations-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
-      <!-- Lato Font -->
+    <!-- Lato Font -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
 
     <!-- Custom Styles -->
     <style>
@@ -53,10 +52,12 @@
             /* Dark gray for body text */
             --text-color-light: #6b7280;
             /* Lighter gray for secondary text */
+            --accent-color: #a78bfa; /* Light purple for additional highlights */
+
         }
 
         body {
-              font-family: 'Lato', sans-serif;
+            font-family: 'Lato', sans-serif;
             background-color: var(--background-color);
             color: var(--text-color-dark);
             overflow-x: hidden;
@@ -69,6 +70,14 @@
 
         .text-primary {
             color: var(--primary-color);
+        }
+
+        .text-accent {
+            color: var(--accent-color);
+        }
+
+        .bg-accent {
+            background-color: var(--accent-color);
         }
 
         .text-secondary {
@@ -108,25 +117,28 @@
         }
 
         /* Bubbles */
-         .bubble {
-             position: absolute;
+        .bubble {
+            position: absolute;
             border-radius: 50%;
             background: rgba(var(--primary-color-rgb), 0.4);
             pointer-events: none;
             /* Makes the bubbles not interfere with clicks */
-            z-index: -1; /* Ensures bubbles are behind other content */
+            z-index: -1;
+            /* Ensures bubbles are behind other content */
         }
 
-         /* Adjust image size in about section */
+        /* Adjust image size in about section */
         #about .w-19 {
-            width: 12rem; /* Adjust as needed */
+            width: 12rem;
+            /* Adjust as needed */
         }
 
         #about .h-48 {
-             height: 12rem; /* Adjust as needed */
+            height: 12rem;
+            /* Adjust as needed */
         }
 
-         /* Rounded corners for project cards */
+        /* Rounded corners for project cards */
         #work .bg-white {
             border-radius: 1rem;
         }
@@ -134,20 +146,48 @@
 
         /* Adjust image container to maintain aspect ratio */
         .image-container {
-          position: relative;
-          overflow: hidden; /* To clip the image if it overflows */
-          padding-bottom: 75%; /* This creates a 4:3 aspect ratio (height = 75% of width) */
-        }
-        
-         .image-container img {
-             position: absolute;
-             top: 0;
-             left: 0;
-              width: 100%;
-             height: 100%;
-             object-fit: cover;
+            position: relative;
+            overflow: hidden;
+            /* To clip the image if it overflows */
+            padding-bottom: 75%;
+            /* This creates a 4:3 aspect ratio (height = 75% of width) */
         }
 
+        .image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+                /* Add padding on small screens */
+            }
+
+            #work .grid {
+                grid-template-columns: 1fr;
+                /* Single column on smaller screens */
+            }
+
+            .flex-col.md:flex-row {
+                flex-direction: column !important;
+            }
+
+            #about .md:pr-10 {
+                padding-right: 0 !important;
+            }
+
+        }
+
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -156,7 +196,8 @@
     <header class="bg-white shadow-md py-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center text-2xl font-bold text-gray-800">
-                <img src="./assets/Copy of White and Black Minimal Letter SA Architect Company Logo.png" alt="Your Logo" class="logo-medium mr-3">
+                <img src="./assets/Copy of White and Black Minimal Letter SA Architect Company Logo.png" alt="Your Logo"
+                    class="logo-medium mr-3">
                 Stanley Aloo
             </a>
 
@@ -164,7 +205,9 @@
                 <ul class="flex space-x-6">
                     <li>
                         <a href="#about" class="flex items-center text-gray-700 hover:text-gray-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-user mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-user mr-2" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 14c4 0 6 2 6 4v1H6v-1c0-2 2-4 6-4z"></path>
                                 <path d="M12 12c2.21 0 4-2 4-4s-1.79-4-4-4-4 2-4 4 1.79 4 4 4z"></path>
                             </svg>
@@ -173,7 +216,9 @@
                     </li>
                     <li>
                         <a href="#work" class="flex items-center text-gray-700 hover:text-gray-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-briefcase mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-briefcase mr-2" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M19 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
                                 <path d="M9 2v4h6V2"></path>
                             </svg>
@@ -182,7 +227,9 @@
                     </li>
                     <li>
                         <a href="#contact" class="flex items-center text-gray-700 hover:text-gray-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-mail mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="lucide lucide-mail mr-2" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 12l-10 6-10-6V6l10 6 10-6z"></path>
                                 <path d="M2 12l10 6 10-6"></path>
                             </svg>
@@ -195,12 +242,9 @@
     </header>
 
     <!-- Hero Section -->
-    <motion.section id="hero" class="py-16 bg-gray-50 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+    <motion.section id="hero" class="py-16 bg-gray-50 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}>
         <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to My Portfolio</h1>
-        <p class="text-lg text-gray-700 mb-8">I'm a passionate producer, video editor, and photographer.</p>
-        <a href="#work" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animated-button">
-            View My Work
-        </a>
     </motion.section>
 
     <!-- About Section -->
@@ -209,17 +253,20 @@
             <div class="md:w-1/2 md:pr-10 mb-8 md:mb-0">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
                 <p class="text-gray-700 mb-6">
-                    Hello! My name is Stanley Aloo. I'm a producer, video editor, and photographer. I have a passion for creating high-quality content and telling stories through different visual media.
+                    Hello! My name is Stanley Aloo. I'm a producer, video editor, and photographer. I have a passion
+                    for creating high-quality content and telling stories through different visual media.
                 </p>
                 <p class="text-gray-700 mb-6">
-                    I enjoy working on both short and long-form projects, and my goal is always to deliver exceptional results for my clients.
+                    I enjoy working on both short and long-form projects, and my goal is always to deliver exceptional
+                    results for my clients.
                 </p>
                 <p class="text-gray-700">
                     I'm also always excited to learn new techniques and to stay updated with current trends.
                 </p>
             </div>
             <div class="md:w-1/2 w-full flex justify-center">
-                <img src="./assets/profile_image.jpg" alt="Your Profile" class="rounded-lg shadow-md w-19 h-48 object-cover">
+                <img src="./assets/profile_image.jpg" alt="Your Profile"
+                    class="rounded-lg shadow-md w-19 h-48 object-cover">
             </div>
         </div>
     </section>
@@ -233,13 +280,19 @@
                 <!-- Project 1 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                     <div class="relative pb-9/16">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/aKfEZ6sS92k?si=HFsfBqK8ufrp3ryB&start=25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/aKfEZ6sS92k?si=HFsfBqK8ufrp3ryB&start=25"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Life of Rabbits"</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
-                            🐇 A detailed guide on rabbit care covering housing, diet, and essential health tips, ensuring a happy and healthy bunny! 🌿🏡 This video is designed to equip beginners with the knowledge needed to care for their new pet.
+                            🐇 A detailed guide on rabbit care covering housing, diet, and essential health tips,
+                            ensuring a happy and healthy bunny! 🌿🏡 This video is designed to equip beginners with the
+                            knowledge needed to care for their new pet.
                         </p>
                     </div>
                 </div>
@@ -247,13 +300,19 @@
                 <!-- Project 2 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                     <div class="relative pb-9/16">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/uj0e5krcWUY?si=drRkdIcaxWROWsip&start=30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/uj0e5krcWUY?si=drRkdIcaxWROWsip&start=30"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Empowering Luo Voices</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
-                            🌍 This project is focused on uniting the Luo community through cultural activities, enhancing collaboration, and fostering empowerment. 🤝 It celebrates the rich Luo heritage and promotes community growth. 🌱✨
+                            🌍 This project is focused on uniting the Luo community through cultural activities,
+                            enhancing collaboration, and fostering empowerment. 🤝 It celebrates the rich Luo heritage
+                            and promotes community growth. 🌱✨
                         </p>
                     </div>
                 </div>
@@ -261,39 +320,47 @@
                 <!-- Project 3 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                     <div class="relative pb-9/16">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/5uxCYbWLymY?si=2YyRCfFHnwjQEkEa&start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/5uxCYbWLymY?si=2YyRCfFHnwjQEkEa&start=5"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">"The Secret Ingredient"</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
-                            🍴Discover the quick and easy tips that will enhance your homemade food to a different level. This short video shows you how you can transform your meals into something unique and very delicious.
+                            🍴Discover the quick and easy tips that will enhance your homemade food to a different level.
+                            This short video shows you how you can transform your meals into something unique and very
+                            delicious.
                         </p>
                     </div>
                 </div>
 
-                 <!-- Project 4 -->
+                <!-- Project 4 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                     <div class="image-container">
                         <img src="./assets/DSC_5246.JPG" alt="Photography Portfolio">
                     </div>
-                     <div class="p-4 flex flex-col flex-grow">
+                    <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">nature at its finest</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
-                            Explore my photography portfolio showcasing a variety of subjects, from portraits to landscapes. I aim to capture unique moments and share the beauty around us. 📸
+                            Explore my photography portfolio showcasing a variety of subjects, from portraits to
+                            landscapes. I aim to capture unique moments and share the beauty around us. 📸
                         </p>
                     </div>
                 </div>
 
                 <!-- Project 5 -->
                 <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-                     <div class="image-container">
-                         <img src="./assets/DSC_5159.JPG" alt="exploring art">
+                    <div class="image-container">
+                        <img src="./assets/DSC_5159.JPG" alt="exploring art">
                     </div>
-                     <div class="p-4 flex flex-col flex-grow">
-                         <h3 class="text-xl font-bold text-gray-800 mb-2">exploring art</h3>
+                    <div class="p-4 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">exploring art</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
-                            Close-up photography captures fine details of small subjects, revealing textures and patterns often unseen. It uses a macro lens for sharp focus. 📸🔍🌸
+                            Close-up photography captures fine details of small subjects, revealing textures and
+                            patterns often unseen. It uses a macro lens for sharp focus. 📸🔍🌸
                         </p>
                     </div>
                 </div>
@@ -306,7 +373,9 @@
                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">portraits</h3>
                         <p class="text-gray-700 mb-4 flex-grow">
-                            Portrait photography highlights a person's personality and emotions, capturing their essence in a single frame. It emphasizes facial expressions, lighting, and composition to tell a unique story. 📸😊🎨
+                            Portrait photography highlights a person's personality and emotions, capturing their essence
+                            in a single frame. It emphasizes facial expressions, lighting, and composition to tell a
+                            unique story. 📸😊🎨
                         </p>
                     </div>
                 </div>
@@ -322,7 +391,8 @@
                 I'm always open to new opportunities and collaborations. Feel free to reach out!
             </p>
             <p class="text-gray-700 mb-6">
-                Email: <a href="mailto:sm2391686@gmail.com" class="text-blue-500 hover:text-blue-700">sm2391686@gmail.com</a>
+                Email: <a href="mailto:sm2391686@gmail.com"
+                    class="text-blue-500 hover:text-blue-700">sm2391686@gmail.com</a>
             </p>
             <p class="text-gray-700 mb-6">
                 Phone: <a href="tel:+254112036777" class="text-blue-500 hover:text-blue-700">+254 112 036 777</a>
@@ -330,13 +400,18 @@
             <!-- WhatsApp Icon -->
             <a href="https://wa.me/254112036777" target="_blank" class="whatsapp-icon flex justify-center mb-6">
 
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd" />
-                    <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path fill="currentColor" fill-rule="evenodd"
+                        d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z"
+                        clip-rule="evenodd" />
+                    <path fill="currentColor"
+                        d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z" />
                 </svg>
                 <p>Whatsapp me
             </a>
-            <a href="https://drive.google.com/file/d/1vwgxLRlb6aSMhYGwuBJtzSX2jZ4maxD4/view?usp=drive_link" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <a href="https://drive.google.com/file/d/1vwgxLRlb6aSMhYGwuBJtzSX2jZ4maxD4/view?usp=drive_link"
+                class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Download Resume
             </a>
         </div>
@@ -379,7 +454,7 @@
 
     <!-- Floating Bubbles Script -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             // Extract rgb values from the primary color
             const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim();
             const hexToRgb = (hex) => {
@@ -408,35 +483,35 @@
 
 
                 const animate = () => {
-                // Update bubble position
-                   let currentX = parseFloat(bubble.style.left);
+                    // Update bubble position
+                    let currentX = parseFloat(bubble.style.left);
                     let currentY = parseFloat(bubble.style.top);
 
 
-                   currentX += xVelocity/5;
-                   currentY += yVelocity/5;
+                    currentX += xVelocity / 5;
+                    currentY += yVelocity / 5;
 
-                // Keep the bubble in the viewport
-                 if(currentX > window.innerWidth || currentX < 0){
-                        xVelocity *=-1;
-                }
-                if(currentY > window.innerHeight || currentY <0){
-                    yVelocity *= -1;
-                }
+                    // Keep the bubble in the viewport
+                    if (currentX > window.innerWidth || currentX < 0) {
+                        xVelocity *= -1;
+                    }
+                    if (currentY > window.innerHeight || currentY < 0) {
+                        yVelocity *= -1;
+                    }
 
                     bubble.style.left = `${currentX}px`;
                     bubble.style.top = `${currentY}px`;
 
-                 requestAnimationFrame(animate);
-            };
+                    requestAnimationFrame(animate);
+                };
 
-            animate();
+                animate();
 
-            document.body.appendChild(bubble);
-            // Remove bubble after certain time
-            setTimeout(() => {
+                document.body.appendChild(bubble);
+                // Remove bubble after certain time
+                setTimeout(() => {
                     bubble.remove();
-                    }, 20000);
+                }, 20000);
 
             };
 
@@ -447,4 +522,4 @@
 
 </body>
 
-</html>
+</html>g
